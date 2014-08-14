@@ -195,10 +195,16 @@ toGeoJSON = (function() {
                         simpleDatas = get(extendedData, 'SimpleData');
 
                     for (i = 0; i < datas.length; i++) {
-                        properties[datas[i].getAttribute('name')] = nodeVal(get1(datas[i], 'value'));
+                        var key = datas[i].getAttribute('name');
+                        var value = nodeVal(get1(datas[i], 'value'));
+                        var stripped = value.replace(/\s/g, '');
+                        properties[key] = stripped;
                     }
                     for (i = 0; i < simpleDatas.length; i++) {
-                        properties[simpleDatas[i].getAttribute('name')] = nodeVal(simpleDatas[i]);
+                        var key = simpleDatas[i].getAttribute('name');
+                        var value = nodeVal(simpleDatas[i]);
+                        var stripped = value.replace(/\s/g, '');
+                        properties[key] = stripped;
                     }
                 }
                 return [{
